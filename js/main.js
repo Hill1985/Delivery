@@ -28,7 +28,7 @@ function toogleModalAuth() {
 function validateForm() {
   let validForm = document.forms['valForm']['valName'].value;
   if(validForm == '') {
-    alert('Field is Empty!!');
+    alert('Login Field is Empty!!');
     return false;
   }
 }
