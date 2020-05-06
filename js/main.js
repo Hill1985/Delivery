@@ -57,6 +57,7 @@ function notAuthorized() {
 
   function logIn(event) {
     event.preventDefault();
+    
     if(loginInput.value) {
       login = loginInput.value;
       localStorage.setItem('Delivery', login);
