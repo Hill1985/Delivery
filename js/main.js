@@ -23,15 +23,10 @@ let login = localStorage.getItem('Delivery');
 //console.dir(modalAuth);
 
 function toogleModalAuth() {
+  loginInput.style.borderColor = '';
   modalAuth.classList.toggle('is-open');
 }
-function validateForm() {
-  let validForm = document.forms['valForm']['valName'].value;
-  if(validForm == '') {
-    alert('Login Field is Empty!!');
-    return false;
-  }
-}
+
 function authorized() {
 
   function logOut() {
@@ -62,16 +57,18 @@ function notAuthorized() {
 
   function logIn(event) {
     event.preventDefault();
-    login = loginInput.value;
-
-    localStorage.setItem('Delivery', login);
-
-    toogleModalAuth();
-    buttonAuth.removeEventListener('click', toogleModalAuth);
-    closeAuth.removeEventListener('click', toogleModalAuth);
-    loginForm.removeEventListener('submit', logIn);
-    loginForm.reset();
-    checkAuth();
+    if(loginInput.value) {
+      login = loginInput.value;
+      localStorage.setItem('Delivery', login);
+      toogleModalAuth();
+      buttonAuth.removeEventListener('click', toogleModalAuth);
+      closeAuth.removeEventListener('click', toogleModalAuth);
+      loginForm.removeEventListener('submit', logIn);
+      loginForm.reset();
+      checkAuth();
+    } else {
+      loginInput.style.borderColor = 'red';
+    }
   }
 
   buttonAuth.addEventListener('click', toogleModalAuth);
